@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AppointmentDto {
 	Long id;
-	Date date ;
+	Date date;
 	String heure;
     UserDto userDto;
 	public Long getId() {
