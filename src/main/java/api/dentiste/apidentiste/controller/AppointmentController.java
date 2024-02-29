@@ -36,7 +36,7 @@ public class AppointmentController {
 	}
 	
 	@PostMapping(value="addappointment" ,consumes = "application/json")
-	ResponseEntity<String> addConsultation(@RequestBody AppointmentAndUser appointmentAndUser) {
+	ResponseEntity<String> addAppointment(@RequestBody AppointmentAndUser appointmentAndUser) {
 		   try {
 			   appointmentOperation.addAppointment(appointmentAndUser);
 	           return new ResponseEntity<>("consultation add successfully", HttpStatus.CREATED);
@@ -45,7 +45,7 @@ public class AppointmentController {
 	        }
 	    }
 	   @GetMapping(value="searchappointmentbydate/{date}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	   ResponseEntity<List<AppointmentDto>> searchConsultationByDate(@PathVariable("date") String date) throws ParseException
+	   ResponseEntity<List<AppointmentDto>> searchAppointmentByDate(@PathVariable("date") String date) throws ParseException
 	   {
 		   SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -59,7 +59,7 @@ public class AppointmentController {
 	   
 	   
 	   @GetMapping(value="searchappointmentbyuser/{userName}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	   ResponseEntity<List<AppointmentDto>> searchConsultationByUser(@PathVariable("userName")String userName)
+	   ResponseEntity<List<AppointmentDto>> searchAppointmentByUser(@PathVariable("userName")String userName)
 	   {
            try {
                return new ResponseEntity<>(appointmentService.searchAppointmentByUser(userName), HttpStatus.CREATED);
@@ -69,7 +69,7 @@ public class AppointmentController {
 	   }
 	   
 	   @DeleteMapping(value="deleteappointment/{id}" ,consumes = "application/json")
-	   ResponseEntity<String> deleteConsultation(@PathVariable("id") Long id) {
+	   ResponseEntity<String> deleteAppointment(@PathVariable("id") Long id) {
 		   try {
 			   appointmentService.deleteAppointment(id);
 	            return new ResponseEntity<>("consultation add successfully", HttpStatus.CREATED);
@@ -91,7 +91,7 @@ public class AppointmentController {
 	   
 	   @PutMapping(value="updateappointment", consumes = MediaType.APPLICATION_JSON_VALUE)
 	   @Transactional
-	   void updateConsultation(@RequestBody AppointmentDto appointmentDto) {
+	   void updateAppointment(@RequestBody AppointmentDto appointmentDto) {
 		   appointmentService.updateAppointment(appointmentDto);
 	    }
 

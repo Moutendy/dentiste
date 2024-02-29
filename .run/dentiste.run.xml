@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="dentiste" type="JarApplication" singleton="false">
-    <option name="WORKING_DIRECTORY" value="C:\Users\chris\eclipse-workspace\apidentiste-1" />
-    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <module name="apidentiste-1" />
-    <method v="2" />
-  </configuration>
-</component>

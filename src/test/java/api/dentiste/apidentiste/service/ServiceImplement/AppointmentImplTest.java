@@ -32,7 +32,7 @@ class AppointmentImplTest {
    private  AppointmentImpl appointment;
 
 
-    @Test
+ @Test
     void addAppointment() {
      AppointmentRepository appointmentRepository = mock(AppointmentRepository.class);
 
@@ -128,10 +128,40 @@ class AppointmentImplTest {
     void deleteAppointment() {
      AppointmentRepository appointmentRepository = mock(AppointmentRepository.class);
      AppointmentsMapper appointmentsMapper = mock(AppointmentsMapper.class);
+     Appointment appointment = new Appointment();
+     AppointmentDto appointmentDto =new AppointmentDto();
+
+     AppointmentImpl appointmentService = new AppointmentImpl(appointmentsMapper,appointmentRepository);
+     when(appointmentRepository.existsById(any(Long.class))).thenReturn(true);
+
+     appointmentService.deleteAppointment(any(Long.class));
+     verify(appointmentRepository).existsById(any(Long.class));
     }
 
     @Test
     void searchAppointmentByDate() {
+     AppointmentRepository appointmentRepository = mock(AppointmentRepository.class);
+     AppointmentsMapper appointmentsMapper = mock(AppointmentsMapper.class);
+     Appointment appointment = new Appointment();
+     appointment.setId(1L);
+     AppointmentDto appointmentDto =new AppointmentDto();
+
+     AppointmentImpl appointmentService = new AppointmentImpl(appointmentsMapper,appointmentRepository);
+     //le mock des differente methode
+     List<Appointment> appointmentList = new ArrayList<>();
+     List<AppointmentDto> appointmentDtoList = new ArrayList<>();
+     appointmentList.add(appointment);
+
+     appointmentDto.setId(1L);
+     appointmentDtoList.add(appointmentDto);
+
+     when(appointmentRepository.searchAppointmentByDate(new Date())).thenReturn(appointmentList);
+     when(appointmentsMapper.listtoRendezVousDto(appointmentList)).thenReturn(appointmentDtoList);
+     List<AppointmentDto> result = appointmentService.searchAppointmentByDate(new Date());
+//     verify(appointmentRepository).searchAppointmentByDate(new Date());
+//     verify(appointmentsMapper).listtoRendezVousDto(appointmentList);
+     ArgumentCaptor<Appointment> captor = ArgumentCaptor.forClass(Appointment.class);
+     assertEquals(appointmentDtoList, result);
     }
 
     @Test

@@ -52,7 +52,7 @@ public class AppointmentImpl implements AppointmentI{
 	@Override
 	public List<AppointmentDto> searchAppointmentByDate(Date date) {
 		// TODO Auto-generated method stub
-		return appointmentMapper.listtoRendezVousDto(appointmentRepository.searchConsultationByDate(date));
+		return appointmentMapper.listtoRendezVousDto(appointmentRepository.searchAppointmentByDate(date));
 	}
 
 	@Override

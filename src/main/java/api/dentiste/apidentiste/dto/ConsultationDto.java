@@ -15,13 +15,13 @@ public class ConsultationDto {
 	protected Date date;
 	protected String heure;
     UserDto usersDto;
+	private String observations;
     public UserDto getUsersDto() {
 		return usersDto;
 	}
 	public void setUsersDto(UserDto usersDto) {
 		this.usersDto = usersDto;
 	}
-	private String observations;
     
 	public Long getId() {
 		return id;

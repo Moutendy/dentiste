@@ -46,9 +46,9 @@ public class UserController {
 	@GetMapping(value="showuser" ,consumes = "application/json")
 	ResponseEntity<List<UserDto>> showUser() {
 		   try {
-           return new ResponseEntity<>(userI.showUser(), HttpStatus.CREATED);
+               return new ResponseEntity<>(userI.showUser(), HttpStatus.CREATED);
 	        } catch (Exception e) {
-	           return new ResponseEntity<>(userI.showUser(), HttpStatus.INTERNAL_SERVER_ERROR);
+			   return new ResponseEntity<>(userI.showUser(), HttpStatus.INTERNAL_SERVER_ERROR);
 	        }
 	    }
 	

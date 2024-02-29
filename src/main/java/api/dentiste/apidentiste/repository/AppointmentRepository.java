@@ -17,5 +17,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
 	List<Appointment>searchAppointment(@Param("name")String name);
 	
 	@Query(value = ConstanteRepository.searchAppointmentByDate,nativeQuery = true)
-	List<Appointment>searchConsultationByDate(@Param("date")Date date);
+	List<Appointment>searchAppointmentByDate(@Param("date")Date date);
 }
