@@ -18,6 +18,7 @@ public interface UserMapper {
 	 @Mapping(target="nom", source="user.nom")
 	 @Mapping(target="prenom", source="user.prenom")
 	 @Mapping(target="specialite", source="user.specialite")
+	 @Mapping(target="profile", source="user.profile")
 	 UserDto toDto(Users user);
 	 
 
@@ -25,6 +26,7 @@ public interface UserMapper {
 	 @Mapping(target="nom", source="userDto.nom")
 	 @Mapping(target="prenom", source="userDto.prenom")
 	 @Mapping(target="specialite", source="userDto.specialite")
+	 @Mapping(target="profile", source="userDto.profile")
 	 Users userDtotoUser(UserDto userDto);
 	
 	List<UserDto> listtoDto(List<Users> user);

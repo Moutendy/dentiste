@@ -31,7 +31,6 @@ public class ConsultationController {
 	protected ConsultationI consultationService;
 	
 	public ConsultationController(ConsultationOperation consultationOperation,ConsultationI consultationService) {
-		
 		this.consultationOperation = consultationOperation;
 		this.consultationService = consultationService;
 	}
@@ -47,10 +46,8 @@ public class ConsultationController {
 	    }
 	   
 	   @GetMapping(value="searchconsultationbydate/{date}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	   ResponseEntity<List<ConsultationDto>> searchConsultationByDate(@PathVariable("date") String date) throws ParseException
-	   {
+	   ResponseEntity<List<ConsultationDto>> searchConsultationByDate(@PathVariable("date") String date) throws ParseException {
 		   SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
 		   Date dateFrDate = dateFormat.parse(date); 
 		   try {
 	            return new ResponseEntity<>(consultationService.searchConsultationByDate(dateFrDate), HttpStatus.CREATED);
@@ -61,8 +58,7 @@ public class ConsultationController {
 	   
 	   
 	   @GetMapping(value="searchconsultationbyuser/{userName}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	   ResponseEntity<List<ConsultationDto>> searchConsultationByUser(@PathVariable("userName")String userName)
-	   {
+	   ResponseEntity<List<ConsultationDto>> searchConsultationByUser(@PathVariable("userName")String userName) {
            try {
                return new ResponseEntity<>(consultationService.searchConsultationByUser(userName), HttpStatus.CREATED);
 	        } catch (Exception e) {
@@ -81,7 +77,7 @@ public class ConsultationController {
 	    }
 	   
 	   
-	   @GetMapping(value="getlistconsultation" ,consumes = "application/json")
+	   @GetMapping(value="getlistconsultation" ,produces = MediaType.APPLICATION_JSON_VALUE)
 	   ResponseEntity<List<ConsultationDto>> getListConsultation() {
 		   try {
 	            return new ResponseEntity<>(consultationService.getListConsultation(), HttpStatus.CREATED);
