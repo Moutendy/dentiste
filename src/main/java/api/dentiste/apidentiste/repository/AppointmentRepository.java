@@ -8,14 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import api.dentiste.apidentiste.entity.Appointment;
+import api.dentiste.apidentiste.entity.Rdv;
 import api.dentiste.apidentiste.util.ConstanteRepository;
 
 @Repository
-public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
+public interface AppointmentRepository extends JpaRepository<Rdv,Long>{
 	@Query(value = ConstanteRepository.searchAppointmentByUser,nativeQuery = true)
-	List<Appointment>searchAppointment(@Param("name")String name);
+	List<Rdv>searchAppointment(@Param("name")String name);
 	
 	@Query(value = ConstanteRepository.searchAppointmentByDate,nativeQuery = true)
-	List<Appointment>searchAppointmentByDate(@Param("date")Date date);
+	List<Rdv>searchAppointmentByDate(@Param("date")Date date);
 }

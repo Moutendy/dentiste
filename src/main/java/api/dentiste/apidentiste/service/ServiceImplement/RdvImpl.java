@@ -5,29 +5,29 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import api.dentiste.apidentiste.dto.AppointmentDto;
+import api.dentiste.apidentiste.dto.RdvDto;
 import api.dentiste.apidentiste.mapper.AppointmentsMapper;
 import api.dentiste.apidentiste.repository.AppointmentRepository;
-import api.dentiste.apidentiste.service.AppointmentI;
+import api.dentiste.apidentiste.service.RdvI;
 
 @Service
-public class AppointmentImpl implements AppointmentI{
+public class RdvImpl implements RdvI {
 	
 	protected AppointmentRepository appointmentRepository;
 	protected AppointmentsMapper appointmentMapper;
-	public AppointmentImpl(AppointmentsMapper appointmentMapper,AppointmentRepository appointmentRepository){
+	public RdvImpl(AppointmentsMapper appointmentMapper, AppointmentRepository appointmentRepository){
 		this.appointmentMapper = appointmentMapper;
 		this.appointmentRepository = appointmentRepository;
 	}
 
 	@Override
-	public void addAppointment(AppointmentDto appointment) {
+	public void addAppointment(RdvDto appointment) {
 		// TODO Auto-generated method stub
 		appointmentRepository.save(appointmentMapper.transformaDtoToEntity(appointment));
 	}
 
 	@Override
-	public void updateAppointment(AppointmentDto appointment) {
+	public void updateAppointment(RdvDto appointment) {
 		// TODO Auto-generated method stub
 		if(appointmentRepository.existsById(appointment.getId())) {
 			appointmentRepository.save(appointmentMapper.transformaDtoToEntity(appointment));
@@ -36,7 +36,7 @@ public class AppointmentImpl implements AppointmentI{
 	}
 
 	@Override
-	public List<AppointmentDto> getListAppointment() {
+	public List<RdvDto> getListAppointment() {
 		// TODO Auto-generated method stub
 		return appointmentMapper.listtoRendezVousDto(appointmentRepository.findAll());
 	}
@@ -50,13 +50,13 @@ public class AppointmentImpl implements AppointmentI{
 	}
 
 	@Override
-	public List<AppointmentDto> searchAppointmentByDate(Date date) {
+	public List<RdvDto> searchAppointmentByDate(Date date) {
 		// TODO Auto-generated method stub
 		return appointmentMapper.listtoRendezVousDto(appointmentRepository.searchAppointmentByDate(date));
 	}
 
 	@Override
-	public List<AppointmentDto> searchAppointmentByUser(String userName) {
+	public List<RdvDto> searchAppointmentByUser(String userName) {
 		// TODO Auto-generated method stub
 		return appointmentMapper.listtoRendezVousDto(appointmentRepository.searchAppointment(userName));
 	}

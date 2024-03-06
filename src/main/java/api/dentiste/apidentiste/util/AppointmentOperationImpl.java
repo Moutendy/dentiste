@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import api.dentiste.apidentiste.dto.UserDto;
 import api.dentiste.apidentiste.mapper.UserMapper;
 import api.dentiste.apidentiste.repository.UserRepository;
-import api.dentiste.apidentiste.service.AppointmentI;
+import api.dentiste.apidentiste.service.RdvI;
 import api.dentiste.apidentiste.service.UserI;
 import api.dentiste.apidentiste.util.extraDto.AppointmentAndUser;
 import api.dentiste.apidentiste.util.inter.AppointmentOperation;
@@ -13,11 +13,11 @@ import api.dentiste.apidentiste.util.inter.AppointmentOperation;
 public class AppointmentOperationImpl implements AppointmentOperation{
 
 	protected UserI userService;
-	protected AppointmentI appointmentService;
+	protected RdvI appointmentService;
 	protected UserMapper userMapper;
 	protected UserRepository userRepository;
 	
-	public AppointmentOperationImpl(UserI userService, AppointmentI appointmentService
+	public AppointmentOperationImpl(UserI userService, RdvI appointmentService
 			,UserMapper userMapper,UserRepository userRepository) {
 		
 		this.userService = userService;
@@ -32,10 +32,10 @@ public class AppointmentOperationImpl implements AppointmentOperation{
 		 if(!userRepository.existsById(appointmentAndUser.getUserDto().getId()))
 			{
 			UserDto userSave = userMapper.toDto(userRepository.save(userMapper.userDtotoUser(appointmentAndUser.getUserDto())));
-			appointmentAndUser.getAppointmentDto().setUserDto(userSave);
+			appointmentAndUser.getRdvDto().setUserDto(userSave);
 			}
-		 appointmentAndUser.getAppointmentDto().setUserDto(appointmentAndUser.getUserDto());
-		 appointmentService.addAppointment(appointmentAndUser.getAppointmentDto());
+		 appointmentAndUser.getRdvDto().setUserDto(appointmentAndUser.getUserDto());
+		 appointmentService.addAppointment(appointmentAndUser.getRdvDto());
 	}
 
 }

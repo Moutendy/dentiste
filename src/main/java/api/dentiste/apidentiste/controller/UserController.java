@@ -31,33 +31,33 @@ public class UserController {
 	           return new ResponseEntity<>("user add successfully", HttpStatus.CREATED);
 	        } catch (Exception e) {
 	           return new ResponseEntity<>("Failed to add consultation: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-	        }
-	    }
+	  }
+	}
 	
 	@GetMapping(value="adduser/{id}" ,consumes = "application/json")
 	ResponseEntity<UserDto> getUser(@PathVariable("id") Long id) {
 		   try {
            return new ResponseEntity<>(userI.getUser(id), HttpStatus.CREATED);
 	        } catch (Exception e) {
-	           return new ResponseEntity<>(userI.getUser(id), HttpStatus.INTERNAL_SERVER_ERROR);
-	        }
-	    }
+	       return new ResponseEntity<>(userI.getUser(id), HttpStatus.INTERNAL_SERVER_ERROR);
+	   }
+	}
 	
 	@GetMapping(value="showuser" ,consumes = "application/json")
 	ResponseEntity<List<UserDto>> showUser() {
-		   try {
-               return new ResponseEntity<>(userI.showUser(), HttpStatus.CREATED);
-	        } catch (Exception e) {
-			   return new ResponseEntity<>(userI.showUser(), HttpStatus.INTERNAL_SERVER_ERROR);
-	        }
-	    }
+	   try {
+		   return new ResponseEntity<>(userI.showUser(), HttpStatus.CREATED);
+		} catch (Exception e) {
+		   return new ResponseEntity<>(userI.showUser(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	@GetMapping(value="searchuser/{userName}" ,consumes = "application/json")
 	ResponseEntity<List<UserDto>> searchUser(@PathVariable("userName")String userName) {
-		   try {
-           return new ResponseEntity<>(userI.searchUser(userName), HttpStatus.CREATED);
-	        } catch (Exception e) {
-	           return new ResponseEntity<>(userI.searchUser(userName), HttpStatus.INTERNAL_SERVER_ERROR);
-	        }
-	    }
+	   try {
+	       return new ResponseEntity<>(userI.searchUser(userName), HttpStatus.CREATED);
+		} catch (Exception e) {
+		   return new ResponseEntity<>(userI.searchUser(userName), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	}
 }

@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @Table(name = "appointment")
-public class Appointment {
+public class Rdv {
 	 @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
